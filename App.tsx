@@ -15,9 +15,9 @@ const App = () => {
   const value = useState(new Animated.Value(0))[0];
 
   function moveBall() {
-    Animated.timing(value, {
-      toValue: 1000,
-      duration: 1000,
+    //make bounce effect
+    Animated.spring(value, {
+      toValue: 100,
       useNativeDriver: false
     }).start();
 
