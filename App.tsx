@@ -12,16 +12,23 @@ import React, { useState } from "react";
 import { Animated, Text, TouchableOpacity, View } from "react-native";
 
 const App = () => {
-  const value = useState(new Animated.Value(0))[0];
+  const opacity = useState(new Animated.Value(0))[0];
 
-  function moveBall() {
-    //make bounce effect
-    Animated.timing(value, {
-      toValue: 500,
-      duration: 5000,
-      useNativeDriver: true,
-    }).start();
 
+  function fadeInBall() {
+    Animated.timing(opacity, {
+      toValue: 1,
+      duration: 1000,
+      useNativeDriver: true
+    }).start()
+  }
+
+  function fadeOutBall() {
+    Animated.timing(opacity, {
+      toValue: 0,
+      duration: 1000,
+      useNativeDriver: true
+    }).start()
   }
 
   return (
@@ -32,13 +39,16 @@ const App = () => {
             width: 100,
             height: 100,
             borderRadius: 100 / 2,
-            transform: [{translateX: value}],
+            opacity, //this is from variable useState
             backgroundColor: "red"
           }]}
         />
 
-        <TouchableOpacity onPress={moveBall}>
-          <Text>Click Me</Text>
+        <TouchableOpacity onPress={fadeInBall}>
+          <Text>Fade In</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={fadeOutBall}>
+          <Text>Fade Out</Text>
         </TouchableOpacity>
       </View>
 
