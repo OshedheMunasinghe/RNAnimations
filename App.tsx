@@ -16,9 +16,10 @@ const App = () => {
 
   function moveBall() {
     //make bounce effect
-    Animated.spring(value, {
-      toValue: 100,
-      useNativeDriver: false
+    Animated.timing(value, {
+      toValue: 500,
+      duration: 5000,
+      useNativeDriver: true,
     }).start();
 
   }
@@ -31,7 +32,7 @@ const App = () => {
             width: 100,
             height: 100,
             borderRadius: 100 / 2,
-            marginLeft: value,
+            transform: [{translateX: value}],
             backgroundColor: "red"
           }]}
         />
